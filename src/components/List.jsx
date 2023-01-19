@@ -17,17 +17,25 @@ export default function List({ items, title }) {
         return <Card title={card.title} key={card.id} />;
       })}
       {adding ? (
-        <div>
-          <input className="w-full rounded bg-slate-600" type="text" />
-          <div>
+        <div className="flex flex-col gap-2">
+          <input className="bg-black-300 w-full rounded" type="text" />
+          <div className="flex gap-2">
             <button
-              className="ml-auto"
+              className="ml-auto flex h-6 w-5 items-center justify-center rounded bg-gray-400"
               onClick={() => {
                 setAdding(false);
                 addCard({ title: 'New Card', id: uuidv4() });
               }}
             >
-              Add
+              <div className="text-slate-100">Add</div>
+            </button>
+            <button
+              className="flex h-6 w-5 items-center justify-center rounded bg-gray-400"
+              onClick={() => {
+                setAdding(false);
+              }}
+            >
+              <div className="text-slate-100">X</div>
             </button>
           </div>
         </div>

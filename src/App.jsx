@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import './App.css';
-import List from './components/List';
 import Board from './components/Board';
 
 function App() {
@@ -35,7 +32,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App flex justify-center bg-slate-500 bg-fixed sm:h-screen">
       <Board lists={lists} />
     </div>
   );
