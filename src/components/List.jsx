@@ -1,13 +1,14 @@
 import { useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { UilPlus, UilTimes } from '@iconscout/react-unicons';
 import Card from './Card';
 
-export default function List({ items, title }) {
+export default function List({ listId, items, title }) {
   const inputRef = useRef(null);
   const [cards, setCards] = useState(items);
   const [adding, setAdding] = useState(false);
 
-  const addCard = (newCard) => {
+  const handleAdd = (newCard) => {
     // Stops user from entering an empty card
     if (!newCard.title) return;
     setCards((prevCards) => [...prevCards, newCard]);
@@ -20,7 +21,7 @@ export default function List({ items, title }) {
   const handleKeyDown = (event) => {
     // Add card if Enter key is pressed
     if (event.key === 'Enter') {
-      addCard({ title: inputRef.current.value, id: uuidv4() });
+      handleAdd({ title: inputRef.current.value, id: uuidv4() });
       inputRef.current.value = '';
     }
     // Close the add card input field if Esc is pressed
@@ -40,6 +41,7 @@ export default function List({ items, title }) {
           <input
             autoFocus
             className="bg-black-300 w-full rounded p-1"
+            onBlur={() => setAdding(false)}
             onKeyDown={handleKeyDown}
             ref={inputRef}
             type="text"
@@ -49,18 +51,22 @@ export default function List({ items, title }) {
               className="ml-auto flex h-6 w-5 items-center justify-center rounded bg-gray-400"
               onClick={() => {
                 setAdding(false);
-                addCard({ title: inputRef.current.value, id: uuidv4() });
               }}
             >
-              <div className="text-slate-100">Add</div>
+              <div className="text-slate-100">
+                <UilTimes />
+              </div>
             </button>
             <button
               className="flex h-6 w-5 items-center justify-center rounded bg-gray-400"
               onClick={() => {
                 setAdding(false);
+                handleAdd({ title: inputRef.current.value, id: uuidv4() });
               }}
             >
-              <div className="text-slate-100">X</div>
+              <div className="text-slate-100">
+                <UilPlus />
+              </div>
             </button>
           </div>
         </div>
@@ -69,7 +75,9 @@ export default function List({ items, title }) {
           className="ml-auto flex h-6 w-5 items-center justify-center rounded bg-gray-400"
           onClick={() => setAdding(true)}
         >
-          <div className="text-slate-100">+</div>
+          <div className="text-slate-100">
+            <UilPlus />
+          </div>
         </button>
       )}
     </div>
