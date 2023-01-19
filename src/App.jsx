@@ -1,28 +1,26 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import './App.css';
+import List from './components/List';
 
 function App() {
   const [count, setCount] = useState(0);
-
+  const items = [
+    {
+      id: 1,
+      title: 'card 1',
+    },
+    {
+      id: 2,
+      title: 'card 2',
+    },
+    {
+      id: 3,
+      title: 'card 3',
+    },
+  ];
   return (
     <div className="App">
-      <div className="flex">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs text-red-500">Click on the Vite and React logos to learn more</p>
+      <List items={items} />
     </div>
   );
 }
