@@ -62,7 +62,7 @@ export default function List({ items, title }) {
         </div>
       ) : (
         <button
-          class="ml-auto flex h-6 w-5 items-center justify-center rounded bg-gray-400"
+          className="ml-auto flex h-6 w-5 items-center justify-center rounded bg-gray-400"
           onClick={() => setAdding(true)}
         >
           <div className="text-slate-100">+</div>
