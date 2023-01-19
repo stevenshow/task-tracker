@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Card from './Card';
 
 export default function List({ items, title }) {
+  const inputRef = useRef(null);
   const [cards, setCards] = useState(items);
   const [adding, setAdding] = useState(false);
 
@@ -18,13 +19,13 @@ export default function List({ items, title }) {
       })}
       {adding ? (
         <div className="flex flex-col gap-2">
-          <input className="bg-black-300 w-full rounded" type="text" />
+          <input className="bg-black-300 w-full rounded" ref={inputRef} type="text" />
           <div className="flex gap-2">
             <button
               className="ml-auto flex h-6 w-5 items-center justify-center rounded bg-gray-400"
               onClick={() => {
                 setAdding(false);
-                addCard({ title: 'New Card', id: uuidv4() });
+                addCard({ title: inputRef.current.value, id: uuidv4() });
               }}
             >
               <div className="text-slate-100">Add</div>
