@@ -13,6 +13,10 @@ export default function List({ items, title }) {
     setCards((prevCards) => [...prevCards, newCard]);
   };
 
+  const handleRemove = (id) => {
+    setCards(cards.filter((card) => card.id !== id));
+  };
+
   const handleKeyDown = (event) => {
     // Add card if Enter key is pressed
     if (event.key === 'Enter') {
@@ -29,7 +33,7 @@ export default function List({ items, title }) {
     <div className="border-1 flex h-fit w-60 flex-col gap-4 rounded border p-4 shadow-md">
       <span className="font-bold">{title}</span>
       {cards.map((card) => {
-        return <Card title={card.title} key={card.id} />;
+        return <Card remove={handleRemove} title={card.title} key={card.id} id={card.id} />;
       })}
       {adding ? (
         <div className="flex flex-col gap-2">
