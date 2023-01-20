@@ -1,9 +1,36 @@
 import Board from './components/Board';
+// ChatGBT suggestion of object structure
+const taskTracker = {
+  order: [1, 2, 3],
+  lists: {
+    1: {
+      title: 'To Do',
+      cards: [
+        { title: 'card 1', id: 1 },
+        { title: 'card 2', id: 2 },
+      ],
+    },
+    2: {
+      title: 'In Progress',
+      cards: [
+        { title: 'card 3', id: 3 },
+        { title: 'card 4', id: 4 },
+      ],
+    },
+    3: {
+      title: 'Done',
+      cards: [
+        { title: 'card 5', id: 5 },
+        { title: 'card 6', id: 6 },
+      ],
+    },
+  },
+};
 
 function App() {
   const lists = {
-    'list 1': {
-      id: 1,
+    992: {
+      title: 'List 1',
       cards: [
         { title: 'card 1', id: 1 },
         { title: 'card 2', id: 2 },
@@ -11,8 +38,8 @@ function App() {
         { title: 'card 4', id: 4 },
       ],
     },
-    'list 2': {
-      id: 2,
+    29: {
+      title: 'List 2',
       cards: [
         { title: 'card 5', id: 5 },
         { title: 'card 6', id: 6 },
@@ -20,8 +47,8 @@ function App() {
         { title: 'card 8', id: 8 },
       ],
     },
-    'list 3': {
-      id: 3,
+    1002: {
+      title: 'List 3',
       cards: [
         { title: 'card 9', id: 9 },
         { title: 'card 10', id: 10 },

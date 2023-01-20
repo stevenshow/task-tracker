@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { UilPlus, UilTimes } from '@iconscout/react-unicons';
 import Card from './Card';
 
-export default function List({ listId, items, title }) {
+export default function List({ items, title, ...props }) {
   const inputRef = useRef(null);
   const [cards, setCards] = useState(items);
   const [adding, setAdding] = useState(false);
@@ -34,13 +34,15 @@ export default function List({ listId, items, title }) {
     <div className="border-1 flex h-fit w-60 flex-col gap-4 rounded border p-4 shadow-md">
       <span className="font-bold">{title}</span>
       {cards.map((card) => {
-        return <Card remove={handleRemove} title={card.title} key={card.id} id={card.id} />;
+        return (
+          <Card remove={handleRemove} title={card.title} key={card.id} id={card.id} {...props} />
+        );
       })}
       {adding ? (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <input
             autoFocus
-            className="bg-black-300 w-full rounded p-1"
+            className="w-full rounded border-none p-1 opacity-75 focus:ring-0"
             onBlur={() => setAdding(false)}
             onKeyDown={handleKeyDown}
             ref={inputRef}
