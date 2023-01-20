@@ -7,7 +7,7 @@ export default function Card({ id, remove, title, ...props }) {
 
   return (
     <div
-      className="border-1 relative m-auto flex flex w-full flex-col rounded border border-green-200 shadow-md"
+      className="card border-1 relative m-auto flex flex w-full flex-col rounded border border-green-200 shadow-md"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >

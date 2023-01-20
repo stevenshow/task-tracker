@@ -4,12 +4,12 @@ import List from './List';
 export default function Board({ lists }) {
   const [boardLists, setBoardLists] = useState(lists);
 
-  handleMoveLeft = (id) => {
+  const handleMoveLeft = (id) => {
     console.log(boardLists);
     console.log(id);
   };
 
-  handleMoveRight = (id) => {};
+  const handleMoveRight = (id) => {};
 
   return (
     <div className="flex flex-col gap-8 sm:flex-row">
