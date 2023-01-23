@@ -8,9 +8,11 @@ export default function List({ items, title, ...props }) {
   const [cards, setCards] = useState(items);
   const [adding, setAdding] = useState(false);
 
+  const onlyWhitespace = (string) => string.trim().length === 0;
+
   const handleAdd = (newCard) => {
     // Stops user from entering an empty card
-    if (!newCard.title) return;
+    if (onlyWhitespace(newCard.title)) return;
     setCards((prevCards) => [...prevCards, newCard]);
   };
 
